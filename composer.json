@@ -1,0 +1,31 @@
+{
+    "name": "marcw/rss-writer",
+    "description": "A simple yet powerful RSS2 feed writer with RSS extensions support (like iTunes podcast tags)",
+    "keywords": ["rss", "rss2", "feed", "podcast", "podcasting"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Weistroff",
+            "email": "marc@weistroff.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MarcW\\RssWriter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\MarcW\\RssWriter\\": "tests/"
+        }
+    },
+    "require": {
+        "ext-xmlwriter": "*"
+    },
+    "require-dev": {
+        "symfony/validator": "^3.1",
+        "phpunit/phpunit": "^5.4",
+        "symfony/debug": "^3.1",
+        "symfony/var-dumper": "^3.1"
+    }
+}
