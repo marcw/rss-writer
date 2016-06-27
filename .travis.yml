@@ -1,5 +1,5 @@
 language: php
-php: [5.6, 7.0, latest, hhvm]
+php: [5.6, 7.0, nightly, hhvm]
 before_script:
     - composer selfupdate
     - composer install
