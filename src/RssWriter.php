@@ -4,16 +4,38 @@ namespace MarcW\RssWriter;
 
 use MarcW\RssWriter\Extension\Core\Channel;
 
+/**
+ * RssWriter writes RSS feed.
+ *
+ * @author Marc Weistroff <marc@weistroff.net>
+ */
 class RssWriter
 {
+    /**
+     * @var \XmlWriter
+     */
     private $xmlWriter;
 
+    /**
+     * @var array
+     */
     private $writers = [];
+
+    /**
+     * @var array
+     */
     private $namespaces = [];
 
-    private $beganWriting = false;
+    /**
+     * @var bool
+     */
+    private $flushEarly = false;
 
-    public function __construct(\XmlWriter $xmlWriter = null, $writers = [])
+    /**
+     * @param \XmlWriter $xmlWriter
+     * @param array      $writers     An array of instances implementing WriterRegistererInterface
+     */
+    public function __construct(\XmlWriter $xmlWriter = null, array $writers = [])
     {
         if ($xmlWriter === null) {
             $xmlWriter = new \XmlWriter();
@@ -21,23 +43,36 @@ class RssWriter
         }
 
         $this->xmlWriter = $xmlWriter;
-        $this->writers = $writers;
+        foreach ($writers as $writer) {
+            $this->registerWriter($writer);
+        }
     }
 
+    /**
+     * registerWriter registers a new Writer in the RssWriter instance.
+     *
+     * @param WriterRegistererInterface $writer
+     */
     public function registerWriter(WriterRegistererInterface $writer)
     {
         $this->writers = array_merge($this->writers, $writer->getRegisteredWriters());
         $this->namespaces = array_merge($this->namespaces, $writer->getRegisteredNamespaces());
     }
 
-    public function getXmlWriter()
-    {
-        return $this->xmlWriter;
-    }
-
+    /**
+     * writeChannel writes a Core\Channel instance feed.
+     *
+     * @param Channel $channel
+     * @return mixed Similar to XMLWriter::flush 
+     * @see http://php.net/manual/function.xmlwriter-flush.php
+     */
     public function writeChannel(Channel $channel)
     {
         $this->xmlWriter->startElement('rss');
+        if ($this->flushEarly) {
+            $this->xmlWriter->flush();
+        }
+
         foreach ($this->namespaces as $ns => $url) {
             $this->xmlWriter->writeAttribute(sprintf('xmlns:%s', $ns), $url);
         }
@@ -46,9 +81,16 @@ class RssWriter
         $this->writeObject($channel);
         $this->xmlWriter->endElement();
 
+
         return $this->xmlWriter->flush();
     }
 
+    /**
+     * writeObject will write the RSS representation of Object
+     *
+     * @param object $object
+     * @throws \LogicException if no writer can handle $object or if $object is not an object
+     */
     public function writeObject($object)
     {
         if (!is_object($object)) {
@@ -61,5 +103,41 @@ class RssWriter
         }
 
         call_user_func($this->writers[$fqcn], $this, $object);
+
+        if ($this->flushEarly) {
+            $this->xmlWriter->flush();
+        }
+    }
+
+    /**
+     * getXmlWriter returns the instance of XmlWriter used.
+     *
+     * @return \XmlWriter
+     */
+    public function getXmlWriter()
+    {
+        return $this->xmlWriter;
+    }
+
+    /**
+     * If passed true, this instance will flush it's content as soon as
+     * possible. Should not be set to true if XMLWriter is used for in-memory
+     * writing.
+     *
+     * @param bool $flushEarly
+     */
+    public function setFlushEarly($flushEarly)
+    {
+        $this->flushEarly = $flushEarly;
+    }
+
+    /**
+     * Returns the current state of flushEarly
+     *
+     * @return bool
+     */
+    public function getFlushEarly()
+    {
+        return $this->flushEarly;
     }
 }

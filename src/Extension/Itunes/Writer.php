@@ -34,23 +34,17 @@ class Writer implements WriterRegistererInterface
 
         if ($channel->getOwner()) {
             $owner = $channel->getOwner();
-            $email = $owner->getEmail();
-            $name = $owner->getName();
-
             $writer->startElement('itunes:owner');
             $writer->startElement('itunes:name');
             $writer->writeCdata($owner->getName());
             $writer->endElement();
-
             $writer->writeElement('itunes:email', $owner->getEmail());
-
             $writer->endElement();
         }
 
         foreach ($channel->getCategories() as $category) {
             if (is_array($category)) {
                 list($parent, $child) = $category;
-
                 $writer->startElement('itunes:category');
                 $writer->writeAttribute('text', $parent);
                 $writer->startElement('itunes:category');
