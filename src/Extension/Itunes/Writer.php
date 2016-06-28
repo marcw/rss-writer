@@ -85,6 +85,12 @@ class Writer implements WriterRegistererInterface
             $writer->endElement();
         }
 
+        if ($common->getSummary()) {
+            $writer->startElement('itunes:summary');
+            $writer->writeCdata($common->getSummary());
+            $writer->endElement();
+        }
+
         if ($common->getBlock()) {
             $writer->writeElement('itunes:block', 'Yes');
         }

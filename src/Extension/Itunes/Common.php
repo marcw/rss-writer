@@ -12,6 +12,7 @@ abstract class Common
     private $image;
     private $explicit;
     private $subtitle;
+    private $summary;
 
     public function setAuthor($author)
     {
@@ -71,5 +72,17 @@ abstract class Common
     public function getSubtitle()
     {
         return $this->subtitle;
+    }
+
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+
+        return $this;
+    }
+
+    public function getSummary()
+    {
+        return $this->summary;
     }
 }
