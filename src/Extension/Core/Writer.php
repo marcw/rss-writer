@@ -23,12 +23,13 @@ class Writer implements WriterRegistererInterface
     public function writeChannel(RssWriter $rssWriter, Channel $channel)
     {
         $writer = $rssWriter->getXmlWriter();
+        $writer->startElement('channel');
 
         $writer->startElement('title');
         $writer->writeCdata($channel->getTitle());
         $writer->endElement();
 
-        $writer->writeElement('link', $channel->getTitle());
+        $writer->writeElement('link', $channel->getLink());
 
         $writer->startElement('description');
         $writer->writeCdata($channel->getDescription());
@@ -101,6 +102,8 @@ class Writer implements WriterRegistererInterface
         foreach ($channel->getItems() as $item) {
             $rssWriter->writeObject($item);
         }
+
+        $writer->endElement();
     }
 
     public function writeItem(RssWriter $rssWriter, Item $item)

@@ -101,38 +101,40 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
 
         $expected = <<<EOF
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
- <title><![CDATA[My Title]]></title>
- <link>My Title</link>
- <description><![CDATA[My Description]]></description>
- <language>en</language>
- <copyright><![CDATA[(c) 2016 Acme]]></copyright>
- <managingEditor><![CDATA[John Doe <john.doe@example.com>]]></managingEditor>
- <webMaster><![CDATA[Jane Doe <jane.doe@example.com]]></webMaster>
- <pubDate>2001-01-01T00:00:00+00:00</pubDate>
- <lastBuildDate>2001-01-01T00:00:00+00:00</lastBuildDate>
- <generator><![CDATA[Generator v1]]></generator>
- <docs>http://example.com/rss2-spec</docs>
- <cloud domain="example.com" port="80" path="/" registerProcedure="myProcedure" protocol="soap"/>
- <ttl>60</ttl>
- <image>
-  <url>https://example.com/img.jpg</url>
-  <link>https://example.com</link>
-  <title><![CDATA[Example Image]]></title>
- </image>
- <rating>R</rating>
- <sy:updatePeriod>hourly</sy:updatePeriod>
- <item>
+ <channel>
   <title><![CDATA[My Title]]></title>
-  <link>https://example.com/my-title</link>
+  <link>https://www.example.com</link>
   <description><![CDATA[My Description]]></description>
-  <author><![CDATA[John Doe <john.doe@example.com]]></author>
-  <comments>https://example.com/my-title#comments</comments>
-  <enclosure url="https://example.com/audio.mp3" length="123" type="audio/mp3"/>
-  <guid><![CDATA[14]]></guid>
+  <language>en</language>
+  <copyright><![CDATA[(c) 2016 Acme]]></copyright>
+  <managingEditor><![CDATA[John Doe <john.doe@example.com>]]></managingEditor>
+  <webMaster><![CDATA[Jane Doe <jane.doe@example.com]]></webMaster>
   <pubDate>2001-01-01T00:00:00+00:00</pubDate>
-  <source url="https://example.com"><![CDATA[Example Title]]></source>
-  <slash:comments>140</slash:comments>
- </item>
+  <lastBuildDate>2001-01-01T00:00:00+00:00</lastBuildDate>
+  <generator><![CDATA[Generator v1]]></generator>
+  <docs>http://example.com/rss2-spec</docs>
+  <cloud domain="example.com" port="80" path="/" registerProcedure="myProcedure" protocol="soap"/>
+  <ttl>60</ttl>
+  <image>
+   <url>https://example.com/img.jpg</url>
+   <link>https://example.com</link>
+   <title><![CDATA[Example Image]]></title>
+  </image>
+  <rating>R</rating>
+  <sy:updatePeriod>hourly</sy:updatePeriod>
+  <item>
+   <title><![CDATA[My Title]]></title>
+   <link>https://example.com/my-title</link>
+   <description><![CDATA[My Description]]></description>
+   <author><![CDATA[John Doe <john.doe@example.com]]></author>
+   <comments>https://example.com/my-title#comments</comments>
+   <enclosure url="https://example.com/audio.mp3" length="123" type="audio/mp3"/>
+   <guid><![CDATA[14]]></guid>
+   <pubDate>2001-01-01T00:00:00+00:00</pubDate>
+   <source url="https://example.com"><![CDATA[Example Title]]></source>
+   <slash:comments>140</slash:comments>
+  </item>
+ </channel>
 </rss>
 
 EOF;

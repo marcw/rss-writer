@@ -16,7 +16,7 @@ class RssStreamedResponseTest extends \PHPUnit_Framework_TestCase
 
         $response = new RssStreamedResponse($channel);
 
-        $this->expectOutputString('<rss version="2.0"><title><![CDATA[My Title]]></title><link>My Title</link><description><![CDATA[My Description]]></description></rss>');
+        $this->expectOutputString('<rss version="2.0"><channel><title><![CDATA[My Title]]></title><link>http://www.example.com</link><description><![CDATA[My Description]]></description></channel></rss>');
         $response->sendContent();
     }
 }
