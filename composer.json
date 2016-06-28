@@ -22,10 +22,15 @@
     "require": {
         "ext-xmlwriter": "*"
     },
+    "suggest": {
+        "symfony/validator": "",
+        "symfony/http-foundation": "Enable streaming RSS response"
+    },
     "require-dev": {
         "symfony/validator": "^3.1",
         "phpunit/phpunit": "^5.4",
         "symfony/debug": "^3.1",
-        "symfony/var-dumper": "^3.1"
+        "symfony/var-dumper": "^3.1",
+        "symfony/http-foundation": "^3.1"
     }
 }
