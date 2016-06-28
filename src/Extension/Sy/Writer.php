@@ -34,7 +34,7 @@ class Writer implements WriterRegistererInterface
         }
 
         if ($extension->getUpdateBase()) {
-            $writer->writeElement('sy:updateBase', $extension->getUpdateBase()->format('c'));
+            $writer->writeElement('sy:updateBase', $extension->getUpdateBase()->format('r'));
         }
     }
 }

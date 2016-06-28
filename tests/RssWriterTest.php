@@ -67,8 +67,8 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
                 ->setDescription('My Description')
                 ->setLanguage('en')
                 ->setCopyright('(c) 2016 Acme')
-                ->setManagingEditor('John Doe <john.doe@example.com>')
-                ->setWebMaster('Jane Doe <jane.doe@example.com')
+                ->setManagingEditor('john.doe@example.com (John Doe)')
+                ->setWebMaster('jane.doe@example.com (Jane Doe)')
                 ->setPubDate($pubDate)
                 ->setLastBuildDate($lastBuildDate)
                 ->setDocs('http://example.com/rss2-spec')
@@ -77,7 +77,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
                 ->setTtl(60)
                 ->setImage($image)
                 ->setRating('R')
-                ->setWebMaster('Jane Doe <jane.doe@example.com')
+                ->setWebMaster('jane.doe@example.com (Jane Doe)')
         ;
 
         $channel->addExtension((new Sy())->setUpdatePeriod(Sy::PERIOD_HOURLY));
@@ -85,7 +85,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
         $item->setTitle('My Title')
             ->setLink('https://example.com/my-title')
             ->setDescription('My Description')
-            ->setAuthor('John Doe <john.doe@example.com')
+            ->setAuthor('john.doe@example.com (John Doe)')
             ->setComments('https://example.com/my-title#comments')
             ->setEnclosure($enclosure)
             ->setPubDate($pubDate)
@@ -107,10 +107,10 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
   <description><![CDATA[My Description]]></description>
   <language>en</language>
   <copyright><![CDATA[(c) 2016 Acme]]></copyright>
-  <managingEditor><![CDATA[John Doe <john.doe@example.com>]]></managingEditor>
-  <webMaster><![CDATA[Jane Doe <jane.doe@example.com]]></webMaster>
-  <pubDate>2001-01-01T00:00:00+00:00</pubDate>
-  <lastBuildDate>2001-01-01T00:00:00+00:00</lastBuildDate>
+  <managingEditor><![CDATA[john.doe@example.com (John Doe)]]></managingEditor>
+  <webMaster><![CDATA[jane.doe@example.com (Jane Doe)]]></webMaster>
+  <pubDate>Mon, 01 Jan 2001 00:00:00 +0000</pubDate>
+  <lastBuildDate>Mon, 01 Jan 2001 00:00:00 +0000</lastBuildDate>
   <generator><![CDATA[Generator v1]]></generator>
   <docs>http://example.com/rss2-spec</docs>
   <cloud domain="example.com" port="80" path="/" registerProcedure="myProcedure" protocol="soap"/>
@@ -126,11 +126,11 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
    <title><![CDATA[My Title]]></title>
    <link>https://example.com/my-title</link>
    <description><![CDATA[My Description]]></description>
-   <author><![CDATA[John Doe <john.doe@example.com]]></author>
+   <author><![CDATA[john.doe@example.com (John Doe)]]></author>
    <comments>https://example.com/my-title#comments</comments>
    <enclosure url="https://example.com/audio.mp3" length="123" type="audio/mp3"/>
    <guid><![CDATA[14]]></guid>
-   <pubDate>2001-01-01T00:00:00+00:00</pubDate>
+   <pubDate>Mon, 01 Jan 2001 00:00:00 +0000</pubDate>
    <source url="https://example.com"><![CDATA[Example Title]]></source>
    <slash:comments>140</slash:comments>
   </item>

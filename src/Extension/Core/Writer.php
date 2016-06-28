@@ -58,11 +58,11 @@ class Writer implements WriterRegistererInterface
         }
 
         if ($channel->getPubDate()) {
-            $writer->writeElement('pubDate', $channel->getPubDate()->format('c'));
+            $writer->writeElement('pubDate', $channel->getPubDate()->format('r'));
         }
 
         if ($channel->getLastBuildDate()) {
-            $writer->writeElement('lastBuildDate', $channel->getLastBuildDate()->format('c'));
+            $writer->writeElement('lastBuildDate', $channel->getLastBuildDate()->format('r'));
         }
 
         foreach ($channel->getCategories() as $category) {
@@ -142,7 +142,7 @@ class Writer implements WriterRegistererInterface
         }
 
         if ($item->getPubDate()) {
-            $writer->writeElement('pubDate', $item->getPubDate()->format('c'));
+            $writer->writeElement('pubDate', $item->getPubDate()->format('r'));
         }
 
         if ($item->getSource()) {

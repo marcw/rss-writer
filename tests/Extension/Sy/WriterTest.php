@@ -20,7 +20,7 @@ class WriterTest extends \PHPUnit_Framework_TestCase
 
         $writer->write($rssWriter, $sy);
         $this->assertSame(
-            "<sy:updatePeriod>daily</sy:updatePeriod><sy:updateFrequency>2</sy:updateFrequency><sy:updateBase>2001-01-01T00:00:00+00:00</sy:updateBase>",
+            "<sy:updatePeriod>daily</sy:updatePeriod><sy:updateFrequency>2</sy:updateFrequency><sy:updateBase>Mon, 01 Jan 2001 00:00:00 +0000</sy:updateBase>",
             $rssWriter->getXmlWriter()->flush()
         );
     }
