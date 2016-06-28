@@ -137,7 +137,10 @@ class Writer implements WriterRegistererInterface
 
         if ($item->getGuid()) {
             $writer->startElement('guid');
-            $writer->writeCdata($item->getGuid());
+            if (!$item->getGuid()->getIsPermaLink()) {
+                $writer->writeAttribute('isPermaLink', 'false');
+            }
+            $writer->writeCdata($item->getGuid()->getGuid());
             $writer->endElement();
         }
 

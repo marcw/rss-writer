@@ -108,7 +108,7 @@ final class Item
         return $this->enclosure;
     }
 
-    public function setGuid($guid)
+    public function setGuid(Guid $guid = null)
     {
         $this->guid = $guid;
 

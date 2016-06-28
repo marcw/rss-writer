@@ -7,6 +7,7 @@ use MarcW\RssWriter\Extension\Core\Cloud;
 use MarcW\RssWriter\Extension\Core\Enclosure;
 use MarcW\RssWriter\Extension\Core\Image;
 use MarcW\RssWriter\Extension\Core\Source;
+use MarcW\RssWriter\Extension\Core\Guid;
 use MarcW\RssWriter\Extension\Core\Item;
 use MarcW\RssWriter\Extension\Core\Writer as CoreWriter;
 use MarcW\RssWriter\Extension\Itunes\Channel as ItunesChannel;
@@ -44,7 +45,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
             ->setProtocol('soap');
 
         $enclosure = new Enclosure();
-        $enclosure->setUrl('https://example.com/audio.mp3')
+        $enclosure->setUrl('http://www.example.com/audio.mp3')
                   ->setLength(123)
                   ->setType('audio/wave')
                   ->setType('audio/mp3')
@@ -92,7 +93,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
             ->setSource($source)
             ->setCategories(['cat1', 'cat2'])
             ->addCategory('cat3')
-            ->setGuid(14)
+            ->setGuid((new Guid())->setIsPermaLink(false)->setGuid(14))
         ;
 
         $channel->addItem($item);
@@ -128,8 +129,8 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
    <description><![CDATA[My Description]]></description>
    <author><![CDATA[john.doe@example.com (John Doe)]]></author>
    <comments>https://example.com/my-title#comments</comments>
-   <enclosure url="https://example.com/audio.mp3" length="123" type="audio/mp3"/>
-   <guid><![CDATA[14]]></guid>
+   <enclosure url="http://www.example.com/audio.mp3" length="123" type="audio/mp3"/>
+   <guid isPermaLink="false"><![CDATA[14]]></guid>
    <pubDate>Mon, 01 Jan 2001 00:00:00 +0000</pubDate>
    <source url="https://example.com"><![CDATA[Example Title]]></source>
    <slash:comments>140</slash:comments>

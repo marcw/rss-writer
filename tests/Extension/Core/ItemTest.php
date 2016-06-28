@@ -5,6 +5,7 @@ namespace Tests\MarcW\RssWriter\Extension\Core;
 use MarcW\RssWriter\Extension\Core\Item;
 use MarcW\RssWriter\Extension\Core\Enclosure;
 use MarcW\RssWriter\Extension\Core\Source;
+use MarcW\RssWriter\Extension\Core\Guid;
 
 class ItemTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,6 +16,8 @@ class ItemTest extends \PHPUnit_Framework_TestCase
         $enclosure = (new Enclosure())->setUrl('https://example.com/enclosure.mp3')->setLength(123)->setType('audio/mp3');
         $source = (new Source())->setUrl('https://example.com')->setTitle('My Source');
         $pubDate = new \DateTime(2001-01-01, new \DateTimeZone('UTC'));
+
+        $guid = new Guid();
 
         $ext1 = new \StdClass();
         $ext2 = new \StdClass();
@@ -31,7 +34,7 @@ class ItemTest extends \PHPUnit_Framework_TestCase
             ->addCategory('cat3')
             ->setExtensions([$ext1])
             ->addExtension($ext2)
-            ->setGuid(14)
+            ->setGuid($guid)
         ;
 
         $this->assertEquals('My Title', $item->getTitle());
@@ -42,7 +45,7 @@ class ItemTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($enclosure, $item->getEnclosure());
         $this->assertSame(['cat1', 'cat2', 'cat3'], $item->getCategories());
         $this->assertSame([$ext1, $ext2], $item->getExtensions());
-        $this->assertEquals(14, $item->getGuid());
+        $this->assertSame($guid, $item->getGuid());
         $this->assertSame($pubDate, $item->getPubDate());
         $this->assertSame($source, $item->getSource());
     }
