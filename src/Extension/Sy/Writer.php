@@ -17,7 +17,7 @@ class Writer implements WriterRegistererInterface
     public function getRegisteredNamespaces()
     {
         return [
-            'sy' => 'http://purl.org/rss/1.0/modules/syndication/'
+            'sy' => 'http://purl.org/rss/1.0/modules/syndication/',
         ];
     }
 

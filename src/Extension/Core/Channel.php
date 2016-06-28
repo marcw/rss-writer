@@ -153,7 +153,7 @@ final class Channel
 
         return $this;
     }
-    
+
     public function getManagingEditor()
     {
         return $this->managingEditor;
@@ -165,7 +165,7 @@ final class Channel
 
         return $this;
     }
-    
+
     public function getWebMaster()
     {
         return $this->webMaster;
@@ -177,7 +177,7 @@ final class Channel
 
         return $this;
     }
-    
+
     public function getPubDate()
     {
         return $this->pubDate;
@@ -189,7 +189,7 @@ final class Channel
 
         return $this;
     }
-    
+
     public function getLastBuildDate()
     {
         return $this->lastBuildDate;
@@ -201,7 +201,7 @@ final class Channel
 
         return $this;
     }
-    
+
     public function getCategories()
     {
         return $this->categories;

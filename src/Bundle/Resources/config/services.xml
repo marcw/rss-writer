@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="marcw_rss_writer.rss_writer" class="MarcW\RssWriter\RssWriter">
+        </service>
+
+        <service id="marcw_rss_writer.writer.core" class="MarcW\RssWriter\Extension\Core\Writer">
+            <tag name="marcw_rss_writer.extension.writer" />
+        </service>
+
+        <service id="marcw_rss_writer.writer.itunes" class="MarcW\RssWriter\Extension\Itunes\Writer">
+            <tag name="marcw_rss_writer.extension.writer" />
+        </service>
+
+        <service id="marcw_rss_writer.writer.sy" class="MarcW\RssWriter\Extension\Sy\Writer">
+            <tag name="marcw_rss_writer.extension.writer" />
+        </service>
+
+        <service id="marcw_rss_writer.writer.slash" class="MarcW\RssWriter\Extension\Slash\Writer">
+            <tag name="marcw_rss_writer.extension.writer" />
+        </service>
+    </services>
+</container>

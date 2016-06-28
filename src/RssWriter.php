@@ -33,7 +33,7 @@ class RssWriter
 
     /**
      * @param \XmlWriter $xmlWriter
-     * @param array      $writers     An array of instances implementing WriterRegistererInterface
+     * @param array      $writers   An array of instances implementing WriterRegistererInterface
      */
     public function __construct(\XmlWriter $xmlWriter = null, array $writers = [])
     {
@@ -63,7 +63,9 @@ class RssWriter
      * writeChannel writes a Core\Channel instance feed.
      *
      * @param Channel $channel
+     *
      * @return mixed Similar to XMLWriter::flush 
+     *
      * @see http://php.net/manual/function.xmlwriter-flush.php
      */
     public function writeChannel(Channel $channel)
@@ -81,14 +83,14 @@ class RssWriter
         $this->writeObject($channel);
         $this->xmlWriter->endElement();
 
-
         return $this->xmlWriter->flush();
     }
 
     /**
-     * writeObject will write the RSS representation of Object
+     * writeObject will write the RSS representation of Object.
      *
      * @param object $object
+     *
      * @throws \LogicException if no writer can handle $object or if $object is not an object
      */
     public function writeObject($object)
@@ -132,7 +134,7 @@ class RssWriter
     }
 
     /**
-     * Returns the current state of flushEarly
+     * Returns the current state of flushEarly.
      *
      * @return bool
      */

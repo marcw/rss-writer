@@ -15,17 +15,20 @@ class RssStreamedResponse extends Response
 
     public function __construct(Channel $channel, RssWriter $rssWriter = null, $status = 200, $headers = [])
     {
-        parent::__construct(null, 200, []);
+        $headers = array_merge(['Content-Type' => 'application/rss+xml'], $headers);
+
+        parent::__construct(null, $status, $headers);
 
         $this->channel = $channel;
         $this->rssWriter = $rssWriter;
 
         if (null === $this->rssWriter) {
             $this->rssWriter = new RssWriter();
-            $this->rssWriter->setFlushEarly(true);
             $this->rssWriter->registerWriter(new CoreWriter());
-            $this->rssWriter->getXmlWriter()->openUri('php://output');
         }
+
+        $this->rssWriter->setFlushEarly(true);
+        $this->rssWriter->getXmlWriter()->openUri('php://output');
     }
 
     /**

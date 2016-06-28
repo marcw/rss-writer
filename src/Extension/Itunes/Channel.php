@@ -82,7 +82,7 @@ final class Channel extends Common
             'Podcasting',
             'Software How-To',
         ],
-        'TV & Film' => []
+        'TV & Film' => [],
     ];
 
     private $categories = [];

@@ -33,10 +33,30 @@ See [this file](tests/RssWriterTest.php).
 
 See [this file](tests/Bridge/Symfony/HttpFoundation/RssStreamedResponseTest.php).
 
+### Symfony2 Bundle
+
+This library also provides a Symfony bundle.
+
+Add this to your `AppKernel.php` file.
+
+    new MarcW\RssWriter\Bundle\MarcWRssWriterBundle()
+
+You can now use the `marcw_rss_writer.rss_writer` service.
+
+You can also return a `RssStreamedResponse` from your controller like this:
+
+    use MarcW\RssWriter\Bridge\Symfony\HttpFoundation\RssStreamedResponse;
+
+    public function myAction()
+    {
+        // $channel = ... (whatever you use to create your Channel object)
+
+        return new RssStreamedResponse($channel, $this->get('marcw_rss_writer.rss_writer'));
+    }
+
 ## Can I contribute?
 
-Sure. Feel free to contribute issues or pull-requests. Feel free to ask
-questions as well.
+Sure! Feel free to report issues, send pull-requests, or ask for help.
 
 ## LICENSE
 
