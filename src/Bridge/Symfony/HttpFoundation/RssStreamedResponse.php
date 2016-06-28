@@ -22,7 +22,7 @@ class RssStreamedResponse extends Response
 
         if (null === $this->rssWriter) {
             $this->rssWriter = new RssWriter();
-            $this->rssWriter->setFlushEearly(true);
+            $this->rssWriter->setFlushEarly(true);
             $this->rssWriter->registerWriter(new CoreWriter());
             $this->rssWriter->getXmlWriter()->openUri('php://output');
         }
