@@ -70,11 +70,12 @@ class RssWriter
      */
     public function writeChannel(Channel $channel)
     {
-        $this->xmlWriter->startElement('rss');
+        $this->xmlWriter->startDocument();
         if ($this->flushEarly) {
             $this->xmlWriter->flush();
         }
 
+        $this->xmlWriter->startElement('rss');
         foreach ($this->namespaces as $ns => $url) {
             $this->xmlWriter->writeAttribute(sprintf('xmlns:%s', $ns), $url);
         }

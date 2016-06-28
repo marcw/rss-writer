@@ -101,6 +101,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
         $xml = $rssWriter->writeChannel($channel);
 
         $expected = <<<EOF
+<?xml version="1.0"?>
 <rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
  <channel>
   <title><![CDATA[My Title]]></title>
