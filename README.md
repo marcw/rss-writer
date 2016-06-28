@@ -27,11 +27,11 @@ Use this library if you want:
 
 ### Feed creation
 
-See [this file](blob/master/tests/RssWriterTest.php).
+See [this file](tests/RssWriterTest.php).
 
 ### Rss Streamed Response
 
-See [this file](blob/master/tests/Bridge/Symfony/HttpFoundation/RssStreamedResponseTest.php).
+See [this file](tests/Bridge/Symfony/HttpFoundation/RssStreamedResponseTest.php).
 
 ## Can I contribute?
 
