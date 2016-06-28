@@ -3,7 +3,8 @@
 [![Build Status](https://travis-ci.org/marcw/rss-writer.svg?branch=master)](https://travis-ci.org/marcw/rss-writer)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/515dfe1b-e319-46a2-9b12-b1fc9508b5a8/mini.png)](https://insight.sensiolabs.com/projects/515dfe1b-e319-46a2-9b12-b1fc9508b5a8)
 
-A simple, yet powerful and fully customizable RSS 2.0 writing library.
+A simple, yet powerful and fully customizable RSS 2.0 writing library, with a
+native support of iTunes podcasting tags and other RSS extensions.
 
 ## Why a new Rss writing library?
 
