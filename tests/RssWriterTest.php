@@ -13,6 +13,8 @@ use MarcW\RssWriter\Extension\Core\Writer as CoreWriter;
 use MarcW\RssWriter\Extension\Itunes\Channel as ItunesChannel;
 use MarcW\RssWriter\Extension\Itunes\Item as ItunesItem;
 use MarcW\RssWriter\Extension\Itunes\Writer as ItunesWriter;
+use MarcW\RssWriter\Extension\DublinCore\DublinCore;
+use MarcW\RssWriter\Extension\DublinCore\Writer as DublinCoreWriter;
 use MarcW\RssWriter\Extension\Slash\Slash;
 use MarcW\RssWriter\Extension\Slash\Writer as SlashWriter;
 use MarcW\RssWriter\Extension\Sy\Sy;
@@ -32,6 +34,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
         $rssWriter->registerWriter(new SyWriter());
         $rssWriter->registerWriter(new SlashWriter());
         $rssWriter->registerWriter(new AtomWriter());
+        $rssWriter->registerWriter(new DublinCoreWriter());
 
         $source = new Source();
         $source->setUrl('https://example.com')
@@ -102,11 +105,12 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
 
         $channel->addItem($item);
         $item->addExtension((new Slash())->setComments(140));
+        $item->addExtension((new DublinCore())->setCreator('John Doe'));
         $xml = $rssWriter->writeChannel($channel);
 
         $expected = <<<EOF
 <?xml version="1.0"?>
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
  <channel>
   <title><![CDATA[My Title]]></title>
   <link>https://www.example.com</link>
@@ -140,6 +144,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
    <pubDate>Mon, 01 Jan 2001 00:00:00 +0000</pubDate>
    <source url="https://example.com"><![CDATA[Example Title]]></source>
    <slash:comments>140</slash:comments>
+   <dc:creator><![CDATA[John Doe]]></dc:creator>
   </item>
  </channel>
 </rss>
