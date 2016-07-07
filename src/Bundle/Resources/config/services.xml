@@ -22,5 +22,13 @@
         <service id="marcw_rss_writer.writer.slash" class="MarcW\RssWriter\Extension\Slash\Writer">
             <tag name="marcw_rss_writer.extension.writer" />
         </service>
+
+        <service id="marcw_rss_writer.writer.atom" class="MarcW\RssWriter\Extension\Atom\Writer">
+            <tag name="marcw_rss_writer.extension.writer" />
+        </service>
+
+        <service id="marcw_rss_writer.writer.dublin_core" class="MarcW\RssWriter\Extension\DublinCore\Writer">
+            <tag name="marcw_rss_writer.extension.writer" />
+        </service>
     </services>
 </container>
