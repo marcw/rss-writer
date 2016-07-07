@@ -34,7 +34,7 @@ See [this file](tests/Bridge/Symfony/HttpFoundation/RssStreamedResponseTest.php)
 
 ### Symfony Bridge
 
-The library provides an extension to the `Symfony\Component\HttpFoundation\Response` class for streaming rss responses to the client. See `[RssStreamedResponse.php](src/Bridge/Symfony/HttpFoundation/RssStreamedResponse.php)`.
+The library provides an extension to the `Symfony\Component\HttpFoundation\Response` class for streaming rss responses to the client. See [`RssStreamedResponse.php`](src/Bridge/Symfony/HttpFoundation/RssStreamedResponse.php).
 
 ### Symfony Bundle
 
