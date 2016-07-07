@@ -7,27 +7,27 @@
         <service id="marcw_rss_writer.rss_writer" class="MarcW\RssWriter\RssWriter">
         </service>
 
-        <service id="marcw_rss_writer.writer.core" class="MarcW\RssWriter\Extension\Core\Writer">
+        <service id="marcw_rss_writer.writer.core" class="MarcW\RssWriter\Extension\Core\CoreWriter">
             <tag name="marcw_rss_writer.extension.writer" />
         </service>
 
-        <service id="marcw_rss_writer.writer.itunes" class="MarcW\RssWriter\Extension\Itunes\Writer">
+        <service id="marcw_rss_writer.writer.itunes" class="MarcW\RssWriter\Extension\Itunes\ItunesWriter">
             <tag name="marcw_rss_writer.extension.writer" />
         </service>
 
-        <service id="marcw_rss_writer.writer.sy" class="MarcW\RssWriter\Extension\Sy\Writer">
+        <service id="marcw_rss_writer.writer.sy" class="MarcW\RssWriter\Extension\Sy\SyWriter">
             <tag name="marcw_rss_writer.extension.writer" />
         </service>
 
-        <service id="marcw_rss_writer.writer.slash" class="MarcW\RssWriter\Extension\Slash\Writer">
+        <service id="marcw_rss_writer.writer.slash" class="MarcW\RssWriter\Extension\Slash\SlashWriter">
             <tag name="marcw_rss_writer.extension.writer" />
         </service>
 
-        <service id="marcw_rss_writer.writer.atom" class="MarcW\RssWriter\Extension\Atom\Writer">
+        <service id="marcw_rss_writer.writer.atom" class="MarcW\RssWriter\Extension\Atom\AtomWriter">
             <tag name="marcw_rss_writer.extension.writer" />
         </service>
 
-        <service id="marcw_rss_writer.writer.dublin_core" class="MarcW\RssWriter\Extension\DublinCore\Writer">
+        <service id="marcw_rss_writer.writer.dublin_core" class="MarcW\RssWriter\Extension\DublinCore\DublinCoreWriter">
             <tag name="marcw_rss_writer.extension.writer" />
         </service>
     </services>
