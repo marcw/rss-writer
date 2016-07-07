@@ -22,6 +22,10 @@ Use this library if you want:
 - Best performance (memory and TTFB) thanks to XML Streaming.
 - Object oriented feed creation with POPO
 
+## How can I install it?
+
+Run `composer require marcw/rss-writer`.
+
 ## How does it work?
 
 ### Feed creation
