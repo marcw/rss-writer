@@ -2,25 +2,25 @@
 
 namespace Tests\MarcW\RssWriter;
 
+use MarcW\RssWriter\Extension\Atom\AtomLink;
+use MarcW\RssWriter\Extension\Atom\AtomWriter;
 use MarcW\RssWriter\Extension\Core\Channel;
 use MarcW\RssWriter\Extension\Core\Cloud;
-use MarcW\RssWriter\Extension\Core\Enclosure;
-use MarcW\RssWriter\Extension\Core\Image;
-use MarcW\RssWriter\Extension\Core\Source;
-use MarcW\RssWriter\Extension\Core\Guid;
-use MarcW\RssWriter\Extension\Core\Item;
 use MarcW\RssWriter\Extension\Core\CoreWriter;
-use MarcW\RssWriter\Extension\Itunes\ItunesChannel;
-use MarcW\RssWriter\Extension\Itunes\ItunesItem;
-use MarcW\RssWriter\Extension\Itunes\ItunesWriter as ItunesWriter;
+use MarcW\RssWriter\Extension\Core\Enclosure;
+use MarcW\RssWriter\Extension\Core\Guid;
+use MarcW\RssWriter\Extension\Core\Image;
+use MarcW\RssWriter\Extension\Core\Item;
+use MarcW\RssWriter\Extension\Core\Source;
 use MarcW\RssWriter\Extension\DublinCore\DublinCore;
 use MarcW\RssWriter\Extension\DublinCore\DublinCoreWriter;
+use MarcW\RssWriter\Extension\Itunes\ItunesChannel;
+use MarcW\RssWriter\Extension\Itunes\ItunesItem;
+use MarcW\RssWriter\Extension\Itunes\ItunesWriter;
 use MarcW\RssWriter\Extension\Slash\Slash;
 use MarcW\RssWriter\Extension\Slash\SlashWriter;
 use MarcW\RssWriter\Extension\Sy\Sy;
 use MarcW\RssWriter\Extension\Sy\SyWriter;
-use MarcW\RssWriter\Extension\Atom\AtomLink;
-use MarcW\RssWriter\Extension\Atom\AtomWriter;
 use MarcW\RssWriter\RssWriter;
 
 class RssWriterTest extends \PHPUnit_Framework_TestCase
