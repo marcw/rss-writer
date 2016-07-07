@@ -2,13 +2,13 @@
 
 namespace Tests\MarcW\RssWriter\Extension\Atom;
 
-use MarcW\RssWriter\Extension\Atom\Link;
+use MarcW\RssWriter\Extension\Atom\AtomLink;
 
-class LinkTest extends \PHPUnit_Framework_TestCase
+class AtomLinkTest extends \PHPUnit_Framework_TestCase
 {
     public function testLink()
     {
-        $link = new Link();
+        $link = new AtomLink();
         $link->setHref('http://www.example.com')
              ->setLength(45)
              ->setHreflang('en')

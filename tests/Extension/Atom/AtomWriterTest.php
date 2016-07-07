@@ -2,23 +2,18 @@
 
 namespace Tests\MarcW\RssWriter\Extension\Atom;
 
-use MarcW\RssWriter\Extension\Atom\Link;
-use MarcW\RssWriter\Extension\Atom\Writer;
+use MarcW\RssWriter\Extension\Atom\AtomLink;
+use MarcW\RssWriter\Extension\Atom\AtomWriter;
 use MarcW\RssWriter\RssWriter;
 
-/**
- * .
- *
- * @author Marc Weistroff <marc.weistroff@sensio.com>
- */
-class WriterTest extends \PHPUnit_Framework_TestCase
+class AtomWriterTest extends \PHPUnit_Framework_TestCase
 {
     public function test()
     {
-        $writer = new Writer();
+        $writer = new AtomWriter();
         $rssWriter = new RssWriter();
 
-        $link = new Link();
+        $link = new AtomLink();
         $link->setHref('http://www.example.com')
              ->setHreflang('en')
              ->setLength(45)

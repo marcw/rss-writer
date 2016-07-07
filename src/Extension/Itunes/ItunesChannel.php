@@ -2,7 +2,7 @@
 
 namespace MarcW\RssWriter\Extension\Itunes;
 
-final class Channel extends Common
+final class ItunesChannel extends Common
 {
     public static $availableCategories = [
         'Arts' => [
@@ -101,7 +101,7 @@ final class Channel extends Common
         return $this->complete;
     }
 
-    public function setOwner(Owner $owner = null)
+    public function setOwner(ItunesOwner $owner = null)
     {
         $this->owner = $owner;
 

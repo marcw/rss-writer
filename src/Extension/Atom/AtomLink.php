@@ -5,12 +5,12 @@ namespace MarcW\RssWriter\Extension\Atom;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Link.
+ * AtomLink.
  *
  * @author Marc Weistroff <marc@weistroff.net>
  * @see http://www.rssboard.org/rss-profile#namespace-elements-atom-link
  */
-class Link
+class AtomLink
 {
     /**
      * @Assert\NotBlank

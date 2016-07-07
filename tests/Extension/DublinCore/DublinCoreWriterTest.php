@@ -3,14 +3,14 @@
 namespace MarcW\RssWriter\Extension\DublinCore;
 
 use MarcW\RssWriter\Extension\DublinCore\DublinCore;
-use MarcW\RssWriter\Extension\DublinCore\Writer;
+use MarcW\RssWriter\Extension\DublinCore\DublinCoreWriter;
 use MarcW\RssWriter\RssWriter;
 
-class WriterTest extends \PHPUnit_Framework_TestCase
+class DublinCoreWriterTest extends \PHPUnit_Framework_TestCase
 {
     public function test()
     {
-        $writer = new Writer();
+        $writer = new DublinCoreWriter();
         $rssWriter = new RssWriter();
 
         $dc = new DublinCore();

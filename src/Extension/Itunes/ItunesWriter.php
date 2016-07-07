@@ -5,13 +5,13 @@ namespace MarcW\RssWriter\Extension\Itunes;
 use MarcW\RssWriter\RssWriter;
 use MarcW\RssWriter\WriterRegistererInterface;
 
-class Writer implements WriterRegistererInterface
+class ItunesWriter implements WriterRegistererInterface
 {
     public function getRegisteredWriters()
     {
         return [
-            Channel::class => [$this, 'writeChannel'],
-            Item::class => [$this, 'writeItem'],
+            ItunesChannel::class => [$this, 'writeChannel'],
+            ItunesItem::class => [$this, 'writeItem'],
         ];
     }
 
@@ -22,7 +22,7 @@ class Writer implements WriterRegistererInterface
         ];
     }
 
-    public function writeChannel(RssWriter $rssWriter, Channel $channel)
+    public function writeChannel(RssWriter $rssWriter, ItunesChannel $channel)
     {
         $writer = $rssWriter->getXmlWriter();
 
@@ -59,7 +59,7 @@ class Writer implements WriterRegistererInterface
         }
     }
 
-    public function writeItem(RssWriter $rssWriter, Item $item)
+    public function writeItem(RssWriter $rssWriter, ItunesItem $item)
     {
         $writer = $rssWriter->getXmlWriter();
         $this->writeCommon($writer, $item);

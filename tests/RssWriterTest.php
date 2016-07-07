@@ -9,18 +9,18 @@ use MarcW\RssWriter\Extension\Core\Image;
 use MarcW\RssWriter\Extension\Core\Source;
 use MarcW\RssWriter\Extension\Core\Guid;
 use MarcW\RssWriter\Extension\Core\Item;
-use MarcW\RssWriter\Extension\Core\Writer as CoreWriter;
-use MarcW\RssWriter\Extension\Itunes\Channel as ItunesChannel;
-use MarcW\RssWriter\Extension\Itunes\Item as ItunesItem;
-use MarcW\RssWriter\Extension\Itunes\Writer as ItunesWriter;
+use MarcW\RssWriter\Extension\Core\CoreWriter;
+use MarcW\RssWriter\Extension\Itunes\ItunesChannel;
+use MarcW\RssWriter\Extension\Itunes\ItunesItem;
+use MarcW\RssWriter\Extension\Itunes\ItunesWriter as ItunesWriter;
 use MarcW\RssWriter\Extension\DublinCore\DublinCore;
-use MarcW\RssWriter\Extension\DublinCore\Writer as DublinCoreWriter;
+use MarcW\RssWriter\Extension\DublinCore\DublinCoreWriter;
 use MarcW\RssWriter\Extension\Slash\Slash;
-use MarcW\RssWriter\Extension\Slash\Writer as SlashWriter;
+use MarcW\RssWriter\Extension\Slash\SlashWriter;
 use MarcW\RssWriter\Extension\Sy\Sy;
-use MarcW\RssWriter\Extension\Sy\Writer as SyWriter;
-use MarcW\RssWriter\Extension\Atom\Link;
-use MarcW\RssWriter\Extension\Atom\Writer as AtomWriter;
+use MarcW\RssWriter\Extension\Sy\SyWriter;
+use MarcW\RssWriter\Extension\Atom\AtomLink;
+use MarcW\RssWriter\Extension\Atom\AtomWriter;
 use MarcW\RssWriter\RssWriter;
 
 class RssWriterTest extends \PHPUnit_Framework_TestCase
@@ -88,7 +88,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
         ;
 
         $channel->addExtension((new Sy())->setUpdatePeriod(Sy::PERIOD_HOURLY));
-        $channel->addExtension((new Link())->setRel('self')->setHref('http://www.example.com/feed.xml')->setType('application/rss+xml'));
+        $channel->addExtension((new AtomLink())->setRel('self')->setHref('http://www.example.com/feed.xml')->setType('application/rss+xml'));
 
         $item->setTitle('My Title')
             ->setLink('https://example.com/my-title')

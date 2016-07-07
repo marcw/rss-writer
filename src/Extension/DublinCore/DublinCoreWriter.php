@@ -6,11 +6,11 @@ use MarcW\RssWriter\WriterRegistererInterface;
 use MarcW\RssWriter\RssWriter;
 
 /**
- * Writer.
+ * DublinCoreWriter.
  *
  * @author Marc Weistroff <marc@weistroff.net> 
  */
-class Writer implements WriterRegistererInterface
+class DublinCoreWriter implements WriterRegistererInterface
 {
     public function getRegisteredWriters()
     {

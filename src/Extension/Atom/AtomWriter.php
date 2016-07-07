@@ -6,16 +6,16 @@ use MarcW\RssWriter\WriterRegistererInterface;
 use MarcW\RssWriter\RssWriter;
 
 /**
- * Writer.
+ * AtomWriter.
  *
  * @author Marc Weistroff <marc@weistroff.net> 
  */
-class Writer implements WriterRegistererInterface
+class AtomWriter implements WriterRegistererInterface
 {
     public function getRegisteredWriters()
     {
         return [
-            Link::class => [$this, 'writeLink'],
+            AtomLink::class => [$this, 'writeLink'],
         ];
     }
 
@@ -26,7 +26,7 @@ class Writer implements WriterRegistererInterface
         ];
     }
 
-    public function writeLink(RssWriter $rssWriter, Link $link)
+    public function writeLink(RssWriter $rssWriter, AtomLink $link)
     {
         $writer = $rssWriter->getXmlWriter();
 

@@ -2,7 +2,7 @@
 
 namespace MarcW\RssWriter\Extension\Itunes;
 
-final class Owner
+final class ItunesOwner
 {
     private $email;
     private $name;

@@ -3,14 +3,14 @@
 namespace MarcW\RssWriter\Extension\Sy;
 
 use MarcW\RssWriter\Extension\Sy\Sy;
-use MarcW\RssWriter\Extension\Sy\Writer;
+use MarcW\RssWriter\Extension\Sy\SyWriter;
 use MarcW\RssWriter\RssWriter;
 
-class WriterTest extends \PHPUnit_Framework_TestCase
+class SyWriterTest extends \PHPUnit_Framework_TestCase
 {
     public function testWrite()
     {
-        $writer = new Writer();
+        $writer = new SyWriter();
         $rssWriter = new RssWriter();
 
         $sy = new Sy();

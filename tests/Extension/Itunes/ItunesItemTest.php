@@ -2,13 +2,13 @@
 
 namespace Tests\MarcW\RssWriter\Extension\Itunes;
 
-use MarcW\RssWriter\Extension\Itunes\Item;
+use MarcW\RssWriter\Extension\Itunes\ItunesItem;
 
-class ItemTest extends \PHPUnit_Framework_TestCase
+class ItunesItemTest extends \PHPUnit_Framework_TestCase
 {
     public function test()
     {
-        $item = new Item();
+        $item = new ItunesItem();
         $item->setDuration('3:43:23')
              ->setIsClosedCaptionned(false)
              ->setOrder(3)

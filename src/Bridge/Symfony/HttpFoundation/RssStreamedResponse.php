@@ -3,7 +3,7 @@
 namespace MarcW\RssWriter\Bridge\Symfony\HttpFoundation;
 
 use MarcW\RssWriter\Extension\Core\Channel;
-use MarcW\RssWriter\Extension\Core\Writer as CoreWriter;
+use MarcW\RssWriter\Extension\Core\CoreWriter;
 use MarcW\RssWriter\RssWriter;
 use Symfony\Component\HttpFoundation\Response;
 

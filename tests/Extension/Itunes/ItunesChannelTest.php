@@ -2,21 +2,21 @@
 
 namespace Tests\Marcw\RssWriter\Extension\Itunes;
 
-use MarcW\RssWriter\Extension\Itunes\Channel;
-use MarcW\RssWriter\Extension\Itunes\Owner;
+use MarcW\RssWriter\Extension\Itunes\ItunesChannel;
+use MarcW\RssWriter\Extension\Itunes\ItunesOwner;
 
-class ChannelTest extends \PHPUnit_Framework_TestCase
+class ItunesChannelTest extends \PHPUnit_Framework_TestCase
 {
     public function testAccessors()
     {
-        $channel = new Channel();
+        $channel = new ItunesChannel();
         $channel->setAuthor('Jane Doe')
                 ->setBlock(true)
                 ->setImage('https://link.to/my_image.jpg')
                 ->setExplicit(true)
                 ->setSubtitle('The Subtitle')
                 ->setComplete(true)
-                ->setOwner((new Owner())->setName('John Doe')->setEmail('john.doe@example.com'))
+                ->setOwner((new ItunesOwner())->setName('John Doe')->setEmail('john.doe@example.com'))
                 ->setCategories(['cat1', 'cat2'])
                 ->addCategory('cat3')
                 ->setAuthor('John Doe');

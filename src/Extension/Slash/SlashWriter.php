@@ -5,7 +5,7 @@ namespace MarcW\RssWriter\Extension\Slash;
 use MarcW\RssWriter\WriterRegistererInterface;
 use MarcW\RssWriter\RssWriter;
 
-class Writer implements WriterRegistererInterface
+class SlashWriter implements WriterRegistererInterface
 {
     public function getRegisteredWriters()
     {

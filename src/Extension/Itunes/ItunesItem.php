@@ -7,7 +7,7 @@ namespace MarcW\RssWriter\Extension\Itunes;
  *
  * @author Marc Weistroff <marc@weistroff.net> 
  */
-final class Item extends Common
+final class ItunesItem extends Common
 {
     private $duration;
     private $isClosedCaptionned;

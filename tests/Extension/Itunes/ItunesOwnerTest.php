@@ -2,13 +2,13 @@
 
 namespace Tests\MarcW\RssWriter\Extension\Itunes;
 
-use MarcW\RssWriter\Extension\Itunes\Owner;
+use MarcW\RssWriter\Extension\Itunes\ItunesOwner;
 
-class OwnerTest extends \PHPUnit_Framework_TestCase
+class ItunesOwnerTest extends \PHPUnit_Framework_TestCase
 {
     public function testAccessors()
     {
-        $owner = new Owner();
+        $owner = new ItunesOwner();
         $owner->setEmail('barfoo@example.com')
               ->setName('Foo Bar')
               ->setEmail('foobar@example.com')

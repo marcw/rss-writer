@@ -3,14 +3,14 @@
 namespace MarcW\RssWriter\Extension\Slash;
 
 use MarcW\RssWriter\Extension\Slash\Slash;
-use MarcW\RssWriter\Extension\Slash\Writer;
+use MarcW\RssWriter\Extension\Slash\SlashWriter;
 use MarcW\RssWriter\RssWriter;
 
-class WriterTest extends \PHPUnit_Framework_TestCase
+class SlashWriterTest extends \PHPUnit_Framework_TestCase
 {
     public function test()
     {
-        $writer = new Writer();
+        $writer = new SlashWriter();
         $rssWriter = new RssWriter();
 
         $slash = new Slash();

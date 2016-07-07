@@ -5,7 +5,7 @@ namespace MarcW\RssWriter\Extension\Core;
 use MarcW\RssWriter\WriterRegistererInterface;
 use MarcW\RssWriter\RssWriter;
 
-class Writer implements WriterRegistererInterface
+class CoreWriter implements WriterRegistererInterface
 {
     public function getRegisteredWriters()
     {

@@ -2,18 +2,18 @@
 
 namespace Tests\MarcW\RssWriter\Extension\Itunes;
 
-use Symfony\Component\Debug\Debug;
-use MarcW\RssWriter\Extension\Itunes\Writer;
-use MarcW\RssWriter\Extension\Itunes\Channel;
-use MarcW\RssWriter\Extension\Itunes\Item;
+use MarcW\RssWriter\Extension\Itunes\ItunesChannel;
+use MarcW\RssWriter\Extension\Itunes\ItunesItem;
+use MarcW\RssWriter\Extension\Itunes\ItunesOwner;
+use MarcW\RssWriter\Extension\Itunes\ItunesWriter;
 use MarcW\RssWriter\RssWriter;
-use MarcW\RssWriter\Extension\Itunes\Owner;
+use Symfony\Component\Debug\Debug;
 
-class WriterTest extends \PHPUnit_Framework_TestCase
+class ItunesWriterTest extends \PHPUnit_Framework_TestCase
 {
     public function testWriterNamespaces()
     {
-        $writer = new Writer();
+        $writer = new ItunesWriter();
         $this->assertEquals(['itunes' => 'http://www.itunes.com/dtds/podcast-1.0.dtd'], $writer->getRegisteredNamespaces());
 
     }
@@ -21,9 +21,9 @@ class WriterTest extends \PHPUnit_Framework_TestCase
     {
         $rssWriter = new RssWriter();
         $rssWriter->getXmlWriter()->setIndent(false);
-        $writer = new Writer();
+        $writer = new ItunesWriter();
 
-        $channel = new Channel();
+        $channel = new ItunesChannel();
         $channel->setAuthor('John Doe')
                 ->setBlock(true)
                 ->setImage('https://link.to/my_image.jpg')
@@ -31,7 +31,7 @@ class WriterTest extends \PHPUnit_Framework_TestCase
                 ->setSubtitle('The Subtitle')
                 ->setSummary('The Summary')
                 ->setComplete(true)
-                ->setOwner((new Owner())->setEmail('john.doe@example.com')->setName('John Doe'))
+                ->setOwner((new ItunesOwner())->setEmail('john.doe@example.com')->setName('John Doe'))
                 ->addCategory('Comedy')
                 ->addCategory('Management & Marketing')
         ;
@@ -46,9 +46,9 @@ class WriterTest extends \PHPUnit_Framework_TestCase
     public function testWriteItem()
     {
         $rssWriter = new RssWriter();
-        $writer = new Writer();
+        $writer = new ItunesWriter();
 
-        $item = new Item();
+        $item = new ItunesItem();
 
         $item->setAuthor('John Doe')
              ->setBlock(true)
