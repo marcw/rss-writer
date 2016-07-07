@@ -101,9 +101,7 @@ class ItunesWriter implements WriterRegistererInterface
             $writer->endElement();
         }
 
-        if ($common->getExplicit()) {
-            $writer->writeElement('itunes:explicit', 'Yes');
-        }
+        $writer->writeElement('itunes:explicit', true === $common->getExplicit() ? 'Yes' : 'No');
 
         if ($common->getSubtitle()) {
             $writer->startElement('itunes:subtitle');
