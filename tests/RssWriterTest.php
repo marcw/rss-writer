@@ -17,6 +17,8 @@ use MarcW\RssWriter\Extension\Slash\Slash;
 use MarcW\RssWriter\Extension\Slash\Writer as SlashWriter;
 use MarcW\RssWriter\Extension\Sy\Sy;
 use MarcW\RssWriter\Extension\Sy\Writer as SyWriter;
+use MarcW\RssWriter\Extension\Atom\Link;
+use MarcW\RssWriter\Extension\Atom\Writer as AtomWriter;
 use MarcW\RssWriter\RssWriter;
 
 class RssWriterTest extends \PHPUnit_Framework_TestCase
@@ -29,6 +31,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
         $rssWriter->registerWriter(new ItunesWriter());
         $rssWriter->registerWriter(new SyWriter());
         $rssWriter->registerWriter(new SlashWriter());
+        $rssWriter->registerWriter(new AtomWriter());
 
         $source = new Source();
         $source->setUrl('https://example.com')
@@ -82,6 +85,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
         ;
 
         $channel->addExtension((new Sy())->setUpdatePeriod(Sy::PERIOD_HOURLY));
+        $channel->addExtension((new Link())->setRel('self')->setHref('http://www.example.com/feed.xml')->setType('application/rss+xml'));
 
         $item->setTitle('My Title')
             ->setLink('https://example.com/my-title')
@@ -102,7 +106,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
 
         $expected = <<<EOF
 <?xml version="1.0"?>
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
  <channel>
   <title><![CDATA[My Title]]></title>
   <link>https://www.example.com</link>
@@ -124,6 +128,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
   </image>
   <rating>R</rating>
   <sy:updatePeriod>hourly</sy:updatePeriod>
+  <atom:link href="http://www.example.com/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
    <title><![CDATA[My Title]]></title>
    <link>https://example.com/my-title</link>
