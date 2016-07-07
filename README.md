@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/marcw/rss-writer.svg?branch=master)](https://travis-ci.org/marcw/rss-writer)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/515dfe1b-e319-46a2-9b12-b1fc9508b5a8/mini.png)](https://insight.sensiolabs.com/projects/515dfe1b-e319-46a2-9b12-b1fc9508b5a8)
+[![Coverage Status](https://coveralls.io/repos/github/marcw/rss-writer/badge.svg?branch=master)](https://coveralls.io/github/marcw/rss-writer?branch=master)
 
 A simple, yet powerful and fully customizable RSS 2.0 writing library, with a
 native support of iTunes podcasting tags and other RSS extensions.
