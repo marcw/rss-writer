@@ -62,7 +62,6 @@ An iTunes category choice list is available to use in your forms. Follow this ex
 
     namespace AppBundle\Form;
 
-    use AppBundle\Entity\File;
     use MarcW\RssWriter\Bridge\Symfony\Form\ChoiceList\Loader\ItunesCategoryChoiceLoader;
     use Symfony\Component\Form\AbstractType;
     use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
