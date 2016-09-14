@@ -39,7 +39,44 @@ See [this file](tests/Bridge/Symfony/HttpFoundation/RssStreamedResponseTest.php)
 
 ### Symfony Bridge
 
+#### HttpFoundation
+
 The library provides an extension to the `Symfony\Component\HttpFoundation\Response` class for streaming rss responses to the client. See [`RssStreamedResponse.php`](src/Bridge/Symfony/HttpFoundation/RssStreamedResponse.php).
+Use it from your controllers like this:
+
+    use MarcW\RssWriter\Bridge\Symfony\HttpFoundation\RssStreamedResponse;
+
+    public function myAction()
+    {
+        // $channel = ... (whatever you use to create your Channel object)
+
+        return new RssStreamedResponse($channel, $this->get('marcw_rss_writer.rss_writer'));
+    }
+
+
+#### Form
+
+An iTunes category choice list is available to use in your forms. Follow this example:
+
+    <?php
+
+    namespace AppBundle\Form;
+
+    use AppBundle\Entity\File;
+    use MarcW\RssWriter\Bridge\Symfony\Form\ChoiceList\Loader\ItunesCategoryChoiceLoader;
+    use Symfony\Component\Form\AbstractType;
+    use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+    use Symfony\Component\Form\FormBuilderInterface;
+
+    class MyFormType extends AbstractType
+    {
+        public function buildForm(FormBuilderInterface $builder, array $options)
+        {
+            // ...
+            $builder->add('category', ChoiceType::class, ['choice_loader' => new ItunesCategoryChoiceLoader()])
+            // ...
+        }
+    }
 
 ### Symfony Bundle
 
@@ -50,17 +87,6 @@ Add this to your `AppKernel.php` file.
     new MarcW\RssWriter\Bundle\MarcWRssWriterBundle()
 
 You can now use the `marcw_rss_writer.rss_writer` service.
-
-You can also return a `RssStreamedResponse` from your controller like this:
-
-    use MarcW\RssWriter\Bridge\Symfony\HttpFoundation\RssStreamedResponse;
-
-    public function myAction()
-    {
-        // $channel = ... (whatever you use to create your Channel object)
-
-        return new RssStreamedResponse($channel, $this->get('marcw_rss_writer.rss_writer'));
-    }
 
 ## Can I contribute?
 
