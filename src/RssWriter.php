@@ -32,15 +32,30 @@ class RssWriter
     private $flushEarly = false;
 
     /**
-     * @param \XmlWriter $xmlWriter
-     * @param array      $writers   An array of instances implementing WriterRegistererInterface
+     * @var bool
      */
-    public function __construct(\XmlWriter $xmlWriter = null, array $writers = [])
+    private $xmlIndent;
+
+    /**
+     * @var string
+     */
+    private $xmlIndentString;
+
+    /**
+     * @param \XmlWriter $xmlWriter
+     * @param array      $writers      An array of instances implementing WriterRegistererInterface
+     * @param bool       $indent       Toggle indentation on/off
+     * @param string     $indentString Set string used for indenting
+     */
+    public function __construct(\XmlWriter $xmlWriter = null, array $writers = [], $indent = false, $indentString = ' ')
     {
         if ($xmlWriter === null) {
             $xmlWriter = new \XmlWriter();
             $xmlWriter->openMemory();
         }
+
+        $this->xmlIndent = $indent;
+        $this->xmlIndentString = $indentString;
 
         $this->xmlWriter = $xmlWriter;
         foreach ($writers as $writer) {
@@ -64,12 +79,15 @@ class RssWriter
      *
      * @param Channel $channel
      *
-     * @return mixed Similar to XMLWriter::flush 
+     * @return mixed Similar to XMLWriter::flush
      *
      * @see http://php.net/manual/function.xmlwriter-flush.php
      */
     public function writeChannel(Channel $channel)
     {
+        $this->xmlWriter->setIndent($this->xmlIndent);
+        $this->xmlWriter->setIndentString($this->xmlIndentString);
+
         $this->xmlWriter->startDocument();
         if ($this->flushEarly) {
             $this->xmlWriter->flush();

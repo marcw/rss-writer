@@ -27,8 +27,7 @@ class RssWriterTest extends \PHPUnit_Framework_TestCase
 {
     public function testRssWriter()
     {
-        $rssWriter = new RssWriter();
-        $rssWriter->getXmlWriter()->setIndent(true);
+        $rssWriter = new RssWriter(null, [], true);
         $rssWriter->registerWriter(new CoreWriter());
         $rssWriter->registerWriter(new ItunesWriter());
         $rssWriter->registerWriter(new SyWriter());
