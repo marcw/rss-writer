@@ -20,7 +20,6 @@ class ItunesWriterTest extends \PHPUnit_Framework_TestCase
     public function testWriteChannel()
     {
         $rssWriter = new RssWriter();
-        $rssWriter->getXmlWriter()->setIndent(false);
         $writer = new ItunesWriter();
 
         $channel = new ItunesChannel();
