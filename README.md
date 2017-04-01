@@ -44,38 +44,41 @@ See [this file](tests/Bridge/Symfony/HttpFoundation/RssStreamedResponseTest.php)
 The library provides an extension to the `Symfony\Component\HttpFoundation\Response` class for streaming rss responses to the client. See [`RssStreamedResponse.php`](src/Bridge/Symfony/HttpFoundation/RssStreamedResponse.php).
 Use it from your controllers like this:
 
-    use MarcW\RssWriter\Bridge\Symfony\HttpFoundation\RssStreamedResponse;
+```php
+use MarcW\RssWriter\Bridge\Symfony\HttpFoundation\RssStreamedResponse;
 
-    public function myAction()
-    {
-        // $channel = ... (whatever you use to create your Channel object)
+public function myAction()
+{
+    // $channel = ... (whatever you use to create your Channel object)
 
-        return new RssStreamedResponse($channel, $this->get('marcw_rss_writer.rss_writer'));
-    }
-
+    return new RssStreamedResponse($channel, $this->get('marcw_rss_writer.rss_writer'));
+}
+```
 
 #### Form
 
 An iTunes category choice list is available to use in your forms. Follow this example:
 
-    <?php
+```php
+<?php
 
-    namespace AppBundle\Form;
+namespace AppBundle\Form;
 
-    use MarcW\RssWriter\Bridge\Symfony\Form\ChoiceList\Loader\ItunesCategoryChoiceLoader;
-    use Symfony\Component\Form\AbstractType;
-    use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-    use Symfony\Component\Form\FormBuilderInterface;
+use MarcW\RssWriter\Bridge\Symfony\Form\ChoiceList\Loader\ItunesCategoryChoiceLoader;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormBuilderInterface;
 
-    class MyFormType extends AbstractType
+class MyFormType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        public function buildForm(FormBuilderInterface $builder, array $options)
-        {
-            // ...
-            $builder->add('category', ChoiceType::class, ['choice_loader' => new ItunesCategoryChoiceLoader()])
-            // ...
-        }
+        // ...
+        $builder->add('category', ChoiceType::class, ['choice_loader' => new ItunesCategoryChoiceLoader()])
+        // ...
     }
+}
+```
 
 ### Symfony Bundle
 
@@ -83,13 +86,19 @@ This library also provides a Symfony bundle.
 
 Add this to your `AppKernel.php` file.
 
-    new MarcW\RssWriter\Bundle\MarcWRssWriterBundle()
+```php
+new MarcW\RssWriter\Bundle\MarcWRssWriterBundle()
+```
 
 You can now use the `marcw_rss_writer.rss_writer` service.
 
 ## Can I contribute?
 
 Sure! Feel free to report issues, send pull-requests, or ask for help.
+
+## Projects using this lib
+
+ - [Banditore](https://bandito.re) retrieves new releases from your Github starred repositories and put them in a RSS feed.
 
 ## LICENSE
 
